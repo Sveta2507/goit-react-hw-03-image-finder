@@ -13,4 +13,4 @@ function getFetch(q, page) {
   });
 }
 
-export default { getFetch };
+export default getFetch;
