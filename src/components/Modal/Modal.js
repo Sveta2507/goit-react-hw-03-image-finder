@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
+import classes from "./Modal.module.css";
 
 export default class Modal extends Component {
   static propTypes = {
@@ -25,8 +26,8 @@ export default class Modal extends Component {
 
   render() {
     return (
-      <div className="Overlay">
-        <div className="Modal">
+      <div className={classes.Overlay}>
+        <div className={classes.Modal}>
           <img src={this.props.largeImageURL} alt="" />
         </div>
       </div>

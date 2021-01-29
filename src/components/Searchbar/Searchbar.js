@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
+import classes from "./Searchbar.module.css";
 
 export default class Searchbar extends Component {
   static propTypes = {
@@ -23,15 +24,15 @@ export default class Searchbar extends Component {
     const { cond } = this.state;
     return (
       <div>
-        <header className="Searchbar">
-          <form className="SearchForm" onSubmit={this.handleSubmit}>
-            <button type="submit" className="SearchForm-button">
-              <span className="SearchForm-button-label">Search</span>
+        <header className={classes.Searchbar}>
+          <form className={classes.SearchForm} onSubmit={this.handleSubmit}>
+            <button type="submit" className={classes.SearchFormButton}>
+              <span className={classes.SearchFormButtonLabel}>Search</span>
             </button>
 
             <input
               value={cond}
-              className="SearchForm-input"
+              className={classes.SearchFormInput}
               type="text"
               autoComplete="off"
               autoFocus
