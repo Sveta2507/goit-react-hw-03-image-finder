@@ -1,16 +1,29 @@
-import React from "react";
+import React, { Component } from "react";
+import PropTypes from "prop-types";
 import classes from "./ImageGalleryItem.module.css";
 
-function ImageGalleryItem({ webformatURL, id, type }) {
-  return (
-    <li key={id} className={classes.ImageGalleryItem}>
-      <img
-        src={webformatURL}
-        alt={type}
-        className={classes.ImageGalleryItemImage}
-      />
-    </li>
-  );
+class ImageGalleryItem extends Component {
+  static propTypes = { onClick: PropTypes.func };
+
+  modal = (elem) => {
+    this.props.openModal(this.props.largeImageURL);
+    console.log(this.props.largeImageURL);
+  };
+
+  render() {
+    return (
+      <>
+        <li onClick={this.modal} className={classes.ImageGalleryItem}>
+          <img
+            src={this.props.webformatURL}
+            alt="type"
+            key={this.props.largeImageURL}
+            className={classes.ImageGalleryItemImage}
+          />
+        </li>
+      </>
+    );
+  }
 }
 
 export default ImageGalleryItem;

@@ -1,4 +1,5 @@
 import axios from "axios";
+import PropTypes from "prop-types";
 // console.log(axios);
 
 function getFetch(q, page) {
@@ -12,5 +13,11 @@ function getFetch(q, page) {
     return response.data.hits;
   });
 }
+
+getFetch.propTypes = {
+  q: PropTypes.string.isRequired,
+  page: PropTypes.number.isRequired,
+  key: PropTypes.string.isRequired,
+};
 
 export default getFetch;

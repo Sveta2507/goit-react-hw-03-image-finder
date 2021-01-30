@@ -31,6 +31,7 @@ export default class Searchbar extends Component {
             </button>
 
             <input
+              name="cond"
               value={cond}
               className={classes.SearchFormInput}
               type="text"

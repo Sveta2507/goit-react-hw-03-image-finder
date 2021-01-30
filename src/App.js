@@ -36,11 +36,13 @@ class App extends Component {
       query: queryOn,
     });
   };
+
   openModal = (largeImageURL) => {
     this.setState({
       largeImageURL: largeImageURL,
     });
   };
+
   modalClose = () => {
     this.setState((prevState) => ({ largeImageURL: !prevState.largeImageURL }));
   };
@@ -50,7 +52,6 @@ class App extends Component {
     const { query, page, APIkey } = this.state;
     imageApi(query, page, APIkey)
       .then((data) => {
-        // console.log(data);
         if (data.length < 1) {
           this.setState({ error: true });
         } else {
@@ -77,7 +78,7 @@ class App extends Component {
     return (
       <div>
         <Searchbar onSubmit={this.hendleSearch} />
-        {error && <p>...The query value failed...</p>}
+        {error && <p>Error</p>}
 
         {loading && <Load />}
         <ImageGallery data={data} openModal={this.openModal} />
@@ -95,77 +96,3 @@ class App extends Component {
 }
 
 export default App;
-
-// class App extends Component {
-//   state = {
-//     q: "",
-//     page: 1,
-//     images: [],
-//   };
-
-//   getQ = (query) => {
-//     this.setState({ q: query });
-//   };
-
-//   fetchImages = () => {
-//     const { q, page } = this.state;
-
-//     imageApi
-//       .getFetch(q, page)
-//       .then((data) => {
-//         console.log(data);
-//         if (data.length > 0) {
-//           this.setState((prev) => ({
-//             images: [...prev.images, ...data],
-//             page: prev.page + 1,
-//           }));
-//         }
-//       })
-//       .catch((error) => console.log(error));
-//   };
-
-//   componentDidMount() {}
-
-//   componentDidUpdate(prevProps, prevState) {
-//     if (prevState.q !== this.state.q) {
-//       this.fetchImages();
-//     }
-//   }
-
-//   componentWillUnmount() {}
-
-//   handleSubmit = searchQuery => {
-//     this.setState({ query: searchQuery, page: 1, data: [] });
-//   };
-
-//   handleChange = ({ target }) => {
-//     const { value, name } = target;
-//     this.setState({
-//       [name]: value,
-//     });
-//   };
-//   getLargeImg = image => {
-//     this.setState({
-//       largeImageURL: image,
-//     });
-//   };
-//   closeModal = () => {
-//     this.setState({
-//       largeImageURL: '',
-//     });
-//   };
-
-//   render() {
-//     return (
-//       <>
-//         <Searchbar getQ={this.getQ} />
-//         <ImageGallery props={this.state.images} />
-//         <Button />
-//         <Load />
-//         <Modal />
-//       </>
-//     );
-//   }
-// }
-
-// export default App;
