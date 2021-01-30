@@ -31,6 +31,7 @@ class App extends Component {
   hendleSearch = (queryOn) => {
     this.setState({
       data: [],
+      page: 1,
     });
     this.setState({
       query: queryOn,
